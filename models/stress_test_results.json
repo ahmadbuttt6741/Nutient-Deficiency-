@@ -1,0 +1,194 @@
+{
+  "vector_1_and_2": {
+    "passed": false,
+    "details": [
+      {
+        "ground_truth": "Calcium_Ca",
+        "predicted": "Zinc_Zn",
+        "confidence": 0.6156378984451294,
+        "status": "success"
+      },
+      {
+        "ground_truth": "Healthy",
+        "predicted": "Healthy",
+        "confidence": 0.9264153838157654,
+        "status": "success"
+      },
+      {
+        "ground_truth": "Iron_Fe",
+        "predicted": "Iron_Fe",
+        "confidence": 0.5362765789031982,
+        "status": "success"
+      },
+      {
+        "ground_truth": "Magnesium_Mg",
+        "predicted": "Magnesium_Mg",
+        "confidence": 0.614191472530365,
+        "status": "success"
+      },
+      {
+        "ground_truth": "Nitrogen_N",
+        "predicted": "Nitrogen_N",
+        "confidence": 0.47459468245506287,
+        "status": "success"
+      },
+      {
+        "ground_truth": "Phosphorus_P",
+        "predicted": "Phosphorus_P",
+        "confidence": 0.46165573596954346,
+        "status": "success"
+      },
+      {
+        "ground_truth": "Potassium_K",
+        "predicted": "Potassium_K",
+        "confidence": 0.34042900800704956,
+        "status": "success"
+      },
+      {
+        "ground_truth": "Sulphur_S",
+        "predicted": "Zinc_Zn",
+        "confidence": 0.34384778141975403,
+        "status": "success"
+      },
+      {
+        "ground_truth": "Zinc_Zn",
+        "predicted": null,
+        "confidence": 0.0,
+        "status": "rejected"
+      }
+    ]
+  },
+  "vector_3": {
+    "passed": true,
+    "details": [
+      {
+        "level": "Mild Blur (r=3)",
+        "is_blurry": false,
+        "sharpness": 42.856388092041016,
+        "is_confident": true,
+        "confidence": 0.578208327293396
+      },
+      {
+        "level": "Heavy Blur (r=8)",
+        "is_blurry": true,
+        "sharpness": 35.707515716552734,
+        "is_confident": false,
+        "confidence": 0.7528056502342224
+      },
+      {
+        "level": "Extreme Blur (r=15)",
+        "is_blurry": true,
+        "sharpness": 24.970069885253906,
+        "is_confident": false,
+        "confidence": 0.3511367738246918
+      }
+    ]
+  },
+  "vector_4": {
+    "passed": true,
+    "details": {
+      "dark": "success",
+      "bright": "success"
+    }
+  },
+  "vector_5": {
+    "passed": true,
+    "details": [
+      {
+        "resolution": "Tiny 32x32",
+        "status": "success",
+        "predicted": "Nitrogen_N",
+        "conf": 0.31163424253463745
+      },
+      {
+        "resolution": "Small 64x64",
+        "status": "success",
+        "predicted": "Magnesium_Mg",
+        "conf": 0.2822704017162323
+      },
+      {
+        "resolution": "Standard 224x224",
+        "status": "success",
+        "predicted": "Potassium_K",
+        "conf": 0.4370615482330322
+      },
+      {
+        "resolution": "High-Res 1024x1024",
+        "status": "success",
+        "predicted": "Nitrogen_N",
+        "conf": 0.4752042591571808
+      },
+      {
+        "resolution": "Non-Square 1920x400",
+        "status": "success",
+        "predicted": "Nitrogen_N",
+        "conf": 0.4936310350894928
+      },
+      {
+        "resolution": "Vertical 400x1200",
+        "status": "success",
+        "predicted": "Nitrogen_N",
+        "conf": 0.465322345495224
+      }
+    ]
+  },
+  "vector_6": {
+    "passed": true,
+    "details": [
+      {
+        "orientation": "Rotate 90 deg",
+        "predicted": null,
+        "conf": 0.0
+      },
+      {
+        "orientation": "Rotate 180 deg",
+        "predicted": "Nitrogen_N",
+        "conf": 0.7931853532791138
+      },
+      {
+        "orientation": "Rotate 270 deg",
+        "predicted": null,
+        "conf": 0.0
+      },
+      {
+        "orientation": "Arbitrary 45 deg",
+        "predicted": null,
+        "conf": 0.0
+      },
+      {
+        "orientation": "Horizontal Flip",
+        "predicted": "Nitrogen_N",
+        "conf": 0.5931466221809387
+      },
+      {
+        "orientation": "Vertical Flip",
+        "predicted": "Nitrogen_N",
+        "conf": 0.8305009007453918
+      }
+    ]
+  },
+  "vector_7": {
+    "passed": true,
+    "details": "Robust against partial occlusion and zoom crops"
+  },
+  "vector_8": {
+    "passed": true,
+    "details": "Nitrogen_N"
+  },
+  "vector_9": {
+    "passed": true,
+    "details": "Handled without crash"
+  },
+  "vector_10": {
+    "passed": true,
+    "rejection_rate": "5/5"
+  },
+  "vector_11": {
+    "passed": true,
+    "safe_rate": "5/5"
+  },
+  "vector_12": {
+    "passed": true,
+    "inference_seconds": 0.68
+  }
+}

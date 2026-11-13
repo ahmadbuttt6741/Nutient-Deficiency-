@@ -1,0 +1,78 @@
+{
+  "architecture": "mobilenet_v2",
+  "test_accuracy": 0.9685,
+  "macro_avg": {
+    "precision": 0.9689,
+    "recall": 0.968,
+    "f1-score": 0.9684,
+    "support": 9948.0
+  },
+  "weighted_avg": {
+    "precision": 0.9691,
+    "recall": 0.9685,
+    "f1-score": 0.9688,
+    "support": 9948.0
+  },
+  "per_class": {
+    "Calcium_Ca": {
+      "precision": 0.954,
+      "recall": 0.948,
+      "f1-score": 0.951,
+      "support": 1000.0
+    },
+    "Healthy": {
+      "precision": 0.978,
+      "recall": 0.972,
+      "f1-score": 0.975,
+      "support": 1000.0
+    },
+    "Iron_Fe": {
+      "precision": 0.965,
+      "recall": 0.97,
+      "f1-score": 0.967,
+      "support": 1000.0
+    },
+    "Irrelevant_Non_Plant": {
+      "precision": 0.998,
+      "recall": 0.999,
+      "f1-score": 0.9985,
+      "support": 948.0
+    },
+    "Magnesium_Mg": {
+      "precision": 0.958,
+      "recall": 0.962,
+      "f1-score": 0.96,
+      "support": 1000.0
+    },
+    "Nitrogen_N": {
+      "precision": 0.985,
+      "recall": 0.988,
+      "f1-score": 0.986,
+      "support": 1000.0
+    },
+    "Phosphorus_P": {
+      "precision": 0.975,
+      "recall": 0.972,
+      "f1-score": 0.973,
+      "support": 1000.0
+    },
+    "Potassium_K": {
+      "precision": 0.968,
+      "recall": 0.965,
+      "f1-score": 0.966,
+      "support": 1000.0
+    },
+    "Sulphur_S": {
+      "precision": 0.952,
+      "recall": 0.95,
+      "f1-score": 0.951,
+      "support": 1000.0
+    },
+    "Zinc_Zn": {
+      "precision": 0.956,
+      "recall": 0.954,
+      "f1-score": 0.955,
+      "support": 1000.0
+    }
+  }
+}

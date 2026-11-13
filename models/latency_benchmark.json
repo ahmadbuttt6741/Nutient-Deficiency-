@@ -1,0 +1,19 @@
+{
+  "model_file_size_mb": 9.98,
+  "total_parameters": 2554378,
+  "trainable_parameters": 2554378,
+  "pure_inference_ms": {
+    "mean": 24.93,
+    "median_p50": 23.73,
+    "p95": 33.35,
+    "p99": 40.32,
+    "min": 17.93,
+    "max": 44.0
+  },
+  "full_pipeline_with_cam_ms": {
+    "mean": 137.98,
+    "median_p50": 124.01,
+    "p95": 216.1,
+    "p99": 360.88
+  }
+}

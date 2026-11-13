@@ -1,0 +1,13 @@
+.venv
+.git
+.gitignore
+.idea
+archive
+archive (1)
+archive (2)
+data/processed
+__pycache__
+*.pyc
+*.zip
+*.log
+AI_Plant_Nutrition_Proposal_Academic_Cover.pdf

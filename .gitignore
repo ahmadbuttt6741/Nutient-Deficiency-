@@ -1,0 +1,29 @@
+# Python Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large Kaggle Datasets (Not needed for deployment)
+archive/
+archive (1)/
+archive (2)/
+data/processed/
+
+# IDE & OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Backup weights
+*_backup.pth
+
+# Archives
+*.zip
+*.tar.gz
