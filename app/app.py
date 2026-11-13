@@ -15,8 +15,10 @@ from PIL import Image
 import numpy as np
 
 # Ensure project root is in python path
-ROOT_DIR = Path(__file__).resolve().parent.parent
-sys.path.append(str(ROOT_DIR))
+FILE_PATH = Path(__file__).resolve()
+ROOT_DIR = FILE_PATH.parent if (FILE_PATH.parent / "src").exists() else FILE_PATH.parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 # Nanstack Branding Constants
 NANSTACK_LOGO_PATH = ROOT_DIR / "app" / "assets" / "nanstack_logo.jpg"
