@@ -141,26 +141,38 @@ st.markdown("""
         padding: 4px !important;
     }
 
-    .navbar-sidebar-toggle-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: rgba(255, 255, 255, 0.16);
-        backdrop-filter: blur(10px);
-        color: #ffffff !important;
-        border: 1px solid rgba(255, 255, 255, 0.35);
-        padding: 5px 14px;
-        border-radius: 9999px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        text-decoration: none !important;
+    /* Top-Left Screen Floating Hamburger Button */
+    .top-left-menu-trigger {
+        position: fixed !important;
+        top: 14px !important;
+        left: 14px !important;
+        z-index: 9999999 !important;
     }
-    .navbar-sidebar-toggle-btn:hover {
-        background: rgba(255, 255, 255, 0.28);
-        border-color: rgba(255, 255, 255, 0.6);
-        transform: translateY(-1px);
+    .floating-hamburger-btn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 42px !important;
+        height: 42px !important;
+        background: #ffffff !important;
+        color: #065f46 !important;
+        border: 1.5px solid #a7f3d0 !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+        cursor: pointer !important;
+        transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        outline: none !important;
+        padding: 0 !important;
+    }
+    .floating-hamburger-btn:hover {
+        background: #ecfdf5 !important;
+        color: #047857 !important;
+        border-color: #34d399 !important;
+        box-shadow: 0 6px 20px rgba(5, 150, 105, 0.22) !important;
+        transform: translateY(-1px) scale(1.04) !important;
+    }
+    .floating-hamburger-btn:active {
+        transform: scale(0.96) !important;
     }
 
     .block-container {
@@ -1357,6 +1369,29 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
         """, unsafe_allow_html=True)
 
     # =========================================================
+    # TOP-LEFT SCREEN FLOATING SIDEBAR TOGGLE
+    # =========================================================
+    st.markdown(f"""
+    <div class="top-left-menu-trigger">
+        <button class="floating-hamburger-btn" onclick="
+            const collapseBtn = window.parent.document.querySelector('[data-testid=\\'stSidebarCollapseButton\\'] button, [data-testid=\\'stSidebarCollapseButton\\']');
+            const expandBtn = window.parent.document.querySelector('[data-testid=\\'stSidebarCollapsedControl\\'] button, [data-testid=\\'stSidebarCollapsedControl\\']');
+            if (collapseBtn && collapseBtn.offsetParent !== null) {{
+                collapseBtn.click();
+            }} else if (expandBtn) {{
+                expandBtn.click();
+            }}
+        " title="Toggle Navigation Sidebar (Open / Close)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+                <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
+        </button>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # =========================================================
     # APP NAVIGATION HEADER / HERO BANNER (BOTANY DEPARTMENT)
     # =========================================================
     user_display_name = user.get("full_name", "Agronomist").split()[0]
@@ -1371,15 +1406,6 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
             </div>
         </div>
         <div class="navbar-badges">
-            <button onclick="
-                const collapseBtn = window.parent.document.querySelector('[data-testid=\\'stSidebarCollapseButton\\'] button, [data-testid=\\'stSidebarCollapseButton\\']');
-                const expandBtn = window.parent.document.querySelector('[data-testid=\\'stSidebarCollapsedControl\\'] button, [data-testid=\\'stSidebarCollapsedControl\\']');
-                if (collapseBtn && collapseBtn.offsetParent !== null) {{ collapseBtn.click(); }}
-                else if (expandBtn) {{ expandBtn.click(); }}
-            " class="navbar-sidebar-toggle-btn" title="Open / Close Sidebar">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
-                <span>{'سائیڈبار' if is_urdu else 'Sidebar'}</span>
-            </button>
             <div class="botany-highlight-pill">
                 <span>🏛️</span>
                 <span>{'شعبہ نباتیات' if is_urdu else 'Department of Botany'}</span>
