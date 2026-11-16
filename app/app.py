@@ -87,68 +87,50 @@ st.markdown("""
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Hide Streamlit default branding toolbar & decoration */
+    /* Hide Streamlit default branding, decoration, and right-side toolbar items (Deploy, 3-dots menu) */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    [data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
     [data-testid="stDecoration"] {display: none !important;}
+    .stAppDeployButton,
+    [data-testid="stToolbarActions"],
+    [data-testid="stToolbarActionButton"] {
+        display: none !important;
+        visibility: hidden !important;
+    }
 
-    /* Keep Streamlit header transparent so sidebar controls remain accessible */
+    /* Keep toolbar and header transparent and non-blocking except for interactive buttons */
+    [data-testid="stToolbar"] {
+        background: transparent !important;
+        pointer-events: none !important;
+    }
     header[data-testid="stHeader"] {
         background: transparent !important;
-        pointer-events: none;
+        pointer-events: none !important;
         z-index: 99999 !important;
     }
-
-    /* Style the native Streamlit Sidebar Open and Close buttons */
-    [data-testid="stSidebarCollapseButton"],
-    [data-testid="stSidebarCollapsedControl"],
-    [data-testid="collapsedControl"],
     header[data-testid="stHeader"] button,
-    section[data-testid="stSidebar"] button[kind="header"],
-    section[data-testid="stSidebar"] [data-testid="stBaseButton-header"] {
-        visibility: visible !important;
-        display: flex !important;
+    header[data-testid="stHeader"] [data-testid="stExpandSidebarButton"],
+    header[data-testid="stHeader"] [data-testid="stSidebarCollapsedControl"] {
         pointer-events: auto !important;
-        opacity: 1 !important;
-        color: #065f46 !important;
-        background: #ffffff !important;
-        border: 1.5px solid #a7f3d0 !important;
-        border-radius: 8px !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
-        transition: all 0.2s ease !important;
-        cursor: pointer !important;
     }
 
-    [data-testid="stSidebarCollapseButton"]:hover,
-    [data-testid="stSidebarCollapsedControl"]:hover,
-    [data-testid="collapsedControl"]:hover,
-    header[data-testid="stHeader"] button:hover {
-        background: #ecfdf5 !important;
-        color: #047857 !important;
-        border-color: #34d399 !important;
-        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2) !important;
-        transform: scale(1.05) !important;
-    }
-
-    /* Floating position for expand button when collapsed */
+    /* Style the native Streamlit Sidebar Open button at Top-Left Corner */
+    [data-testid="stExpandSidebarButton"],
     [data-testid="stSidebarCollapsedControl"],
     [data-testid="collapsedControl"] {
         position: fixed !important;
         top: 14px !important;
         left: 14px !important;
-        z-index: 999999 !important;
-        padding: 4px !important;
+        z-index: 9999999 !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
     }
 
-    /* Top-Left Screen Floating Hamburger Button */
-    .top-left-menu-trigger {
-        position: fixed !important;
-        top: 14px !important;
-        left: 14px !important;
-        z-index: 9999999 !important;
-    }
-    .floating-hamburger-btn {
+    [data-testid="stExpandSidebarButton"] button,
+    [data-testid="stSidebarCollapsedControl"] button,
+    [data-testid="collapsedControl"] button {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -162,17 +144,78 @@ st.markdown("""
         cursor: pointer !important;
         transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1) !important;
         outline: none !important;
-        padding: 0 !important;
+        pointer-events: auto !important;
+        visibility: visible !important;
     }
-    .floating-hamburger-btn:hover {
+
+    [data-testid="stExpandSidebarButton"] button:hover,
+    [data-testid="stSidebarCollapsedControl"] button:hover,
+    [data-testid="collapsedControl"] button:hover {
         background: #ecfdf5 !important;
         color: #047857 !important;
         border-color: #34d399 !important;
         box-shadow: 0 6px 20px rgba(5, 150, 105, 0.22) !important;
-        transform: translateY(-1px) scale(1.04) !important;
+        transform: scale(1.06) !important;
     }
-    .floating-hamburger-btn:active {
-        transform: scale(0.96) !important;
+
+    /* Replace default chevron arrow with pure CSS 3-bar hamburger menu icon */
+    [data-testid="stExpandSidebarButton"] button svg,
+    [data-testid="stSidebarCollapsedControl"] button svg,
+    [data-testid="collapsedControl"] button svg {
+        display: none !important;
+    }
+    [data-testid="stExpandSidebarButton"] button::before,
+    [data-testid="stSidebarCollapsedControl"] button::before,
+    [data-testid="collapsedControl"] button::before {
+        content: "" !important;
+        display: block !important;
+        width: 18px !important;
+        height: 2.2px !important;
+        background-color: #065f46 !important;
+        border-radius: 2px !important;
+        box-shadow: 0 -6px 0 #065f46, 0 6px 0 #065f46 !important;
+        transition: all 0.2s ease !important;
+    }
+    [data-testid="stExpandSidebarButton"] button:hover::before,
+    [data-testid="stSidebarCollapsedControl"] button:hover::before,
+    [data-testid="collapsedControl"] button:hover::before {
+        background-color: #047857 !important;
+        box-shadow: 0 -6px 0 #047857, 0 6px 0 #047857 !important;
+    }
+
+    /* Style the native Streamlit Sidebar Close button (inside sidebar) */
+    [data-testid="stSidebarCollapseButton"] {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+
+    [data-testid="stSidebarCollapseButton"] button,
+    section[data-testid="stSidebar"] button[kind="header"],
+    section[data-testid="stSidebar"] button[aria-label="Collapse sidebar"] {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 36px !important;
+        height: 36px !important;
+        background: #ffffff !important;
+        color: #065f46 !important;
+        border: 1.5px solid #e2e8f0 !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05) !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        pointer-events: auto !important;
+    }
+
+    [data-testid="stSidebarCollapseButton"] button:hover,
+    section[data-testid="stSidebar"] button[kind="header"]:hover,
+    section[data-testid="stSidebar"] button[aria-label="Collapse sidebar"]:hover {
+        background: #fee2e2 !important;
+        color: #b91c1c !important;
+        border-color: #fecaca !important;
+        transform: scale(1.05) !important;
     }
 
     .block-container {
@@ -1284,8 +1327,10 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
                 </div>
             </div>
             <button onclick="
-                const btn = window.parent.document.querySelector('[data-testid=\\'stSidebarCollapseButton\\'] button, [data-testid=\\'stSidebarCollapseButton\\']');
-                if (btn) {{ btn.click(); }}
+                var doc = (window.parent && window.parent.document) ? window.parent.document : document;
+                var btn = doc.querySelector('[data-testid=stSidebarCollapseButton] button, [data-testid=stSidebarCollapseButton], button[aria-label*=Collapse]');
+                if (!btn) btn = document.querySelector('[data-testid=stSidebarCollapseButton] button, [data-testid=stSidebarCollapseButton], button[aria-label*=Collapse]');
+                if (btn) btn.click();
             " style="background:#f1f5f9; border:1px solid #cbd5e1; color:#334155; padding:5px 10px; border-radius:8px; font-size:0.75rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:4px;" title="Close Sidebar">
                 ✕ <span>{'بند کریں' if is_urdu else 'Close'}</span>
             </button>
@@ -1368,28 +1413,6 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
         </a>
         """, unsafe_allow_html=True)
 
-    # =========================================================
-    # TOP-LEFT SCREEN FLOATING SIDEBAR TOGGLE
-    # =========================================================
-    st.markdown(f"""
-    <div class="top-left-menu-trigger">
-        <button class="floating-hamburger-btn" onclick="
-            const collapseBtn = window.parent.document.querySelector('[data-testid=\\'stSidebarCollapseButton\\'] button, [data-testid=\\'stSidebarCollapseButton\\']');
-            const expandBtn = window.parent.document.querySelector('[data-testid=\\'stSidebarCollapsedControl\\'] button, [data-testid=\\'stSidebarCollapsedControl\\']');
-            if (collapseBtn && collapseBtn.offsetParent !== null) {{
-                collapseBtn.click();
-            }} else if (expandBtn) {{
-                expandBtn.click();
-            }}
-        " title="Toggle Navigation Sidebar (Open / Close)">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <line x1="3" y1="12" x2="21" y2="12"/>
-                <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-        </button>
-    </div>
-    """, unsafe_allow_html=True)
 
     # =========================================================
     # APP NAVIGATION HEADER / HERO BANNER (BOTANY DEPARTMENT)
