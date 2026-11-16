@@ -87,10 +87,81 @@ st.markdown("""
         font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    /* Hide Streamlit default branding */
+    /* Hide Streamlit default branding toolbar & decoration */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
-    header {visibility: hidden;}
+    [data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
+    [data-testid="stDecoration"] {display: none !important;}
+
+    /* Keep Streamlit header transparent so sidebar controls remain accessible */
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+        pointer-events: none;
+        z-index: 99999 !important;
+    }
+
+    /* Style the native Streamlit Sidebar Open and Close buttons */
+    [data-testid="stSidebarCollapseButton"],
+    [data-testid="stSidebarCollapsedControl"],
+    [data-testid="collapsedControl"],
+    header[data-testid="stHeader"] button,
+    section[data-testid="stSidebar"] button[kind="header"],
+    section[data-testid="stSidebar"] [data-testid="stBaseButton-header"] {
+        visibility: visible !important;
+        display: flex !important;
+        pointer-events: auto !important;
+        opacity: 1 !important;
+        color: #065f46 !important;
+        background: #ffffff !important;
+        border: 1.5px solid #a7f3d0 !important;
+        border-radius: 8px !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+        transition: all 0.2s ease !important;
+        cursor: pointer !important;
+    }
+
+    [data-testid="stSidebarCollapseButton"]:hover,
+    [data-testid="stSidebarCollapsedControl"]:hover,
+    [data-testid="collapsedControl"]:hover,
+    header[data-testid="stHeader"] button:hover {
+        background: #ecfdf5 !important;
+        color: #047857 !important;
+        border-color: #34d399 !important;
+        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2) !important;
+        transform: scale(1.05) !important;
+    }
+
+    /* Floating position for expand button when collapsed */
+    [data-testid="stSidebarCollapsedControl"],
+    [data-testid="collapsedControl"] {
+        position: fixed !important;
+        top: 14px !important;
+        left: 14px !important;
+        z-index: 999999 !important;
+        padding: 4px !important;
+    }
+
+    .navbar-sidebar-toggle-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.16);
+        backdrop-filter: blur(10px);
+        color: #ffffff !important;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        padding: 5px 14px;
+        border-radius: 9999px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none !important;
+    }
+    .navbar-sidebar-toggle-btn:hover {
+        background: rgba(255, 255, 255, 0.28);
+        border-color: rgba(255, 255, 255, 0.6);
+        transform: translateY(-1px);
+    }
 
     .block-container {
         padding-top: 1.25rem !important;
@@ -1192,12 +1263,20 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
     # =========================================================
     with st.sidebar:
         st.markdown(f"""
-        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
-            <div class="sidebar-logo-icon">{ICONS['leaf']}</div>
-            <div>
-                <h3 style="margin:0; font-size:1.25rem; font-weight:800; color:#0f172a;">AgriVision AI</h3>
-                <p style="margin:0; font-size:0.75rem; color:#64748b;">Workstation Edition 2.0</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <div style="display:flex; align-items:center; gap:10px;">
+                <div class="sidebar-logo-icon">{ICONS['leaf']}</div>
+                <div>
+                    <h3 style="margin:0; font-size:1.15rem; font-weight:800; color:#0f172a;">AgriVision AI</h3>
+                    <p style="margin:0; font-size:0.75rem; color:#64748b;">Department of Botany</p>
+                </div>
             </div>
+            <button onclick="
+                const btn = window.parent.document.querySelector('[data-testid=\\'stSidebarCollapseButton\\'] button, [data-testid=\\'stSidebarCollapseButton\\']');
+                if (btn) {{ btn.click(); }}
+            " style="background:#f1f5f9; border:1px solid #cbd5e1; color:#334155; padding:5px 10px; border-radius:8px; font-size:0.75rem; font-weight:700; cursor:pointer; display:inline-flex; align-items:center; gap:4px;" title="Close Sidebar">
+                ✕ <span>{'بند کریں' if is_urdu else 'Close'}</span>
+            </button>
         </div>
         """, unsafe_allow_html=True)
 
@@ -1292,6 +1371,15 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
             </div>
         </div>
         <div class="navbar-badges">
+            <button onclick="
+                const collapseBtn = window.parent.document.querySelector('[data-testid=\\'stSidebarCollapseButton\\'] button, [data-testid=\\'stSidebarCollapseButton\\']');
+                const expandBtn = window.parent.document.querySelector('[data-testid=\\'stSidebarCollapsedControl\\'] button, [data-testid=\\'stSidebarCollapsedControl\\']');
+                if (collapseBtn && collapseBtn.offsetParent !== null) {{ collapseBtn.click(); }}
+                else if (expandBtn) {{ expandBtn.click(); }}
+            " class="navbar-sidebar-toggle-btn" title="Open / Close Sidebar">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+                <span>{'سائیڈبار' if is_urdu else 'Sidebar'}</span>
+            </button>
             <div class="botany-highlight-pill">
                 <span>🏛️</span>
                 <span>{'شعبہ نباتیات' if is_urdu else 'Department of Botany'}</span>
