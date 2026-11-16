@@ -212,6 +212,34 @@ st.markdown("""
         background-color: #34d399;
         box-shadow: 0 0 8px #34d399;
     }
+    .botany-highlight-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #ffffff;
+        color: #065f46 !important;
+        padding: 6px 16px;
+        border-radius: 9999px;
+        font-size: 0.84rem;
+        font-weight: 800;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        border: 2px solid #a7f3d0;
+        letter-spacing: 0.02em;
+    }
+    .botany-hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        padding: 4px 14px;
+        border-radius: 9999px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 8px;
+        backdrop-filter: blur(8px);
+    }
     .nanstack-nav-badge {
         display: inline-flex;
         align-items: center;
@@ -799,6 +827,14 @@ st.markdown("""
             gap: 8px;
             flex-wrap: wrap;
         }
+        .botany-highlight-pill {
+            font-size: 0.74rem;
+            padding: 4px 10px;
+        }
+        .botany-hero-tag {
+            font-size: 0.72rem;
+            padding: 3px 10px;
+        }
         .nanstack-nav-badge {
             font-size: 0.75rem;
             padding: 4px 10px 4px 5px;
@@ -911,15 +947,14 @@ def render_landing_page(nanstack_logo_b64: str):
             </div>
             <div>
                 <h3 style="margin:0; font-size:1.3rem; font-weight:800; color:#0f172a; letter-spacing:-0.02em;">AgriVision AI</h3>
-                <p style="margin:0; font-size:0.75rem; color:#64748b;">Plant Nutrition Diagnostic System</p>
+                <p style="margin:0; font-size:0.75rem; color:#64748b;">Department of Botany • Plant Nutrition Diagnostic System</p>
             </div>
         </div>
         <div>
-            <a href="{NANSTACK_URL}" target="_blank" rel="noopener noreferrer" class="nanstack-nav-badge">
-                <img src="data:image/jpeg;base64,{nanstack_logo_b64}" class="nanstack-nav-logo" alt="Nanstack" />
-                <span>Engineered by <b>Nanstack</b></span>
-                <span style="font-size:0.75rem; opacity:0.8; color:#0284c7;">↗</span>
-            </a>
+            <div style="display:inline-flex; align-items:center; gap:8px; background:#ecfdf5; border:1.5px solid #a7f3d0; color:#065f46; padding:6px 16px; border-radius:9999px; font-size:0.84rem; font-weight:800; box-shadow:0 2px 6px rgba(5,150,105,0.08);">
+                <span>🏛️</span>
+                <span>Department of Botany</span>
+            </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -932,7 +967,7 @@ def render_landing_page(nanstack_logo_b64: str):
         st.markdown(f"""
         <div class="landing-hero-badge">
             <span class="pulse-dot"></span>
-            <span>Enterprise Agronomic AI • Precision Crop Health</span>
+            <span>Department of Botany • Precision Crop Health AI</span>
         </div>
         <h1 class="landing-title">
             Intelligent Plant Nutrition & <span class="landing-title-highlight">Deficiency Detection</span>
@@ -943,7 +978,7 @@ def render_landing_page(nanstack_logo_b64: str):
         </p>
         """, unsafe_allow_html=True)
 
-        # 4 Core Value Pillars
+        # Core Value Pillars (Cleaned)
         st.markdown(f"""
         <div class="feature-list">
             <div class="feature-item">
@@ -951,20 +986,6 @@ def render_landing_page(nanstack_logo_b64: str):
                 <div class="feature-text">
                     <h4>Multi-Nutrient Screening (9 Target Classes)</h4>
                     <p>Detects deficiencies across primary, secondary, and micronutrients including Nitrogen, Phosphorus, Potassium, Calcium, Iron, Magnesium, Sulphur, Zinc, and Healthy foliage.</p>
-                </div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon-box">{ICONS['scan']}</div>
-                <div class="feature-text">
-                    <h4>Explainable AI (Grad-CAM Saliency Maps)</h4>
-                    <p>Visual activation heatmaps highlight exact physiological leaf symptoms (chlorosis, marginal necrosis, interveinal patterns), ensuring explainable diagnosis.</p>
-                </div>
-            </div>
-            <div class="feature-item">
-                <div class="feature-icon-box">{ICONS['shield']}</div>
-                <div class="feature-text">
-                    <h4>Automated Quality & Uncertainty Filtering</h4>
-                    <p>Real-time Laplacian blur estimation and confidence scoring prevent false classifications by rejecting out-of-focus or ambiguous imagery.</p>
                 </div>
             </div>
             <div class="feature-item">
@@ -1145,10 +1166,10 @@ def render_landing_page(nanstack_logo_b64: str):
 
     # Landing Page Footer
     st.markdown(f"""
-    <div style="margin-top:3rem; padding:1.5rem; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:0.8rem; color:#64748b;">
-        <div>© 2026 AgriVision AI • Academic & Agricultural Research Platform</div>
+    <div style="margin-top:3rem; padding:1.5rem; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:0.85rem; color:#64748b;">
+        <div>© 2026 <b>Department of Botany</b> • AgriVision AI Platform</div>
         <div>
-            Developed & Maintained by <a href="{NANSTACK_URL}" target="_blank" style="color:#059669; font-weight:700; text-decoration:none;">Nanstack</a>
+            Engineered & Developed by <a href="{NANSTACK_URL}" target="_blank" rel="noopener noreferrer" style="color:#0284c7; font-weight:700; text-decoration:none;">Nanstack (nanstack.tech ↗)</a>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -1257,29 +1278,34 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
         """, unsafe_allow_html=True)
 
     # =========================================================
-    # APP NAVIGATION HEADER / HERO BANNER
+    # APP NAVIGATION HEADER / HERO BANNER (BOTANY DEPARTMENT)
     # =========================================================
     user_display_name = user.get("full_name", "Agronomist").split()[0]
     
     st.markdown(f"""
     <div class="app-navbar" style="margin-bottom:1.5rem;">
         <div class="brand-section">
-            <div class="brand-logo">{ICONS['leaf']}</div>
-            <div>
-                <h1 class="brand-title">{'پودوں کے غذائی اجزاء کی تشخیص' if is_urdu else 'AgriVision AI Workstation'}</h1>
-                <p class="brand-subtitle">{'مصنوعی ذہانت و ڈیپ لرننگ کے ذریعے فصلوں کی درست نگہداشت' if is_urdu else f'Welcome, {user.get("full_name")} • Production Neural Engine Active'}</p>
+            <div class="botany-hero-tag">
+                <span>🏛️</span>
+                <span>{'شعبہ نباتیات (باٹنی ڈیپارٹمنٹ)' if is_urdu else 'Department of Botany • Academic Research'}</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:16px;">
+                <div class="brand-logo">{ICONS['leaf']}</div>
+                <div>
+                    <h1 class="brand-title">{'پودوں کے غذائی اجزاء کی تشخیص' if is_urdu else 'AgriVision AI Workstation'}</h1>
+                    <p class="brand-subtitle">{'شعبہ نباتیات • تحقیقی و پیداواری نیورل انجن فعال ہے' if is_urdu else f'🌿 <b>Department of Botany</b> • Welcome, {user.get("full_name")} • Production Neural Engine Active'}</p>
+                </div>
             </div>
         </div>
         <div class="navbar-badges">
+            <div class="botany-highlight-pill">
+                <span>🏛️</span>
+                <span>{'شعبہ نباتیات' if is_urdu else 'Botany Department'}</span>
+            </div>
             <div class="status-pill">
                 <span class="pulse-dot"></span>
                 <span>{'نظام آن لائن ہے' if is_urdu else 'Engine Online'}</span>
             </div>
-            <a href="{NANSTACK_URL}" target="_blank" rel="noopener noreferrer" class="nanstack-nav-badge">
-                <img src="data:image/jpeg;base64,{nanstack_logo_b64}" class="nanstack-nav-logo" alt="Nanstack Logo" />
-                <span>Developed by <b>Nanstack</b></span>
-                <span style="font-size:0.75rem; opacity:0.8; color:#0284c7;">↗</span>
-            </a>
             <a href="?logout=true" target="_self" class="navbar-logout-btn">
                 {ICONS['log_out']}
                 <span>{'لاگ آؤٹ' if is_urdu else 'Log Out'}</span>
@@ -1320,9 +1346,8 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
     # =========================================================
     # TABS NAVIGATION
     # =========================================================
-    tab_diag, tab_metrics, tab_encyclopedia = st.tabs([
+    tab_diag, tab_encyclopedia = st.tabs([
         "Leaf Diagnostic & Saliency Analysis" if not is_urdu else "پتوں کی تشخیص اور تجزیہ",
-        "Research Evaluation & Benchmark Metrics" if not is_urdu else "تحقیقی کارکردگی اور نتائج",
         "Nutrient Deficiency Encyclopedia" if not is_urdu else "غذائی اجزاء کی معلوماتی گائیڈ"
     ])
 
@@ -1609,77 +1634,7 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
                 """, unsafe_allow_html=True)
 
     # ---------------------------------------------------------
-    # TAB 2: RESEARCH METRICS & ACADEMIC EVALUATION
-    # ---------------------------------------------------------
-    with tab_metrics:
-        st.markdown(f"""
-        <div class="section-title">
-            {ICONS['bar_chart']}
-            <span>{'تعلیمی و تحقیقی نتائج (سیکشن 9)' if is_urdu else 'Academic Evaluation & Benchmark Metrics (Section 9)'}</span>
-        </div>
-        """, unsafe_allow_html=True)
-
-        if METRICS_PATH.exists():
-            with open(METRICS_PATH, "r") as f:
-                metrics = json.load(f)
-
-            m1, m2, m3, m4 = st.columns(4)
-            m1.metric("Overall Accuracy", f"{metrics.get('test_accuracy', 0):.2%}", "Held-Out Test Split (9,948 leaves)")
-            m2.metric("Macro Precision", f"{metrics.get('macro_avg', {}).get('precision', 0):.2%}")
-            m3.metric("Macro Recall", f"{metrics.get('macro_avg', {}).get('recall', 0):.2%}")
-            m4.metric("Macro F1-Score", f"{metrics.get('macro_avg', {}).get('f1-score', 0):.2%}")
-
-            st.divider()
-
-            cm_col, table_col = st.columns([1.1, 1], gap="large")
-            with cm_col:
-                st.markdown(f"""
-                <div class="sub-section-title">
-                    {ICONS['target']}
-                    <span>Confusion Matrix (Normalized)</span>
-                </div>
-                """, unsafe_allow_html=True)
-                if CONFUSION_MATRIX_PATH.exists():
-                    st.image(str(CONFUSION_MATRIX_PATH), caption="Confusion Matrix across 9 Classes on Held-Out Test Set", width="stretch")
-                else:
-                    st.info("Run evaluation script to generate confusion matrix.")
-
-            with table_col:
-                st.markdown(f"""
-                <div class="sub-section-title">
-                    {ICONS['flask']}
-                    <span>Per-Class Accuracy Breakdown</span>
-                </div>
-                """, unsafe_allow_html=True)
-                per_class = metrics.get("per_class", {})
-                for cls_name, scores in per_class.items():
-                    clean_name = cls_name.replace('_', ' ')
-                    with st.expander(f"{clean_name}"):
-                        c1, c2, c3 = st.columns(3)
-                        c1.metric("Precision", f"{scores.get('precision', 0):.1%}")
-                        c2.metric("Recall", f"{scores.get('recall', 0):.1%}")
-                        c3.metric("F1-Score", f"{scores.get('f1-score', 0):.1%}")
-                        st.caption(f"Evaluated Test Samples: {scores.get('support', 0)} leaves")
-
-        # Training History Loss & Accuracy Curves
-        if HISTORY_PATH.exists():
-            with open(HISTORY_PATH, "r") as f:
-                hist = json.load(f)
-            st.divider()
-            st.markdown(f"""
-            <div class="sub-section-title">
-                {ICONS['activity']}
-                <span>Training Loss & Convergence Curves</span>
-            </div>
-            """, unsafe_allow_html=True)
-            h1, h2 = st.columns(2)
-            with h1:
-                st.line_chart({"Train Loss": hist.get("train_loss", []), "Val Loss": hist.get("val_loss", [])})
-            with h2:
-                st.line_chart({"Train Accuracy": hist.get("train_acc", []), "Val Accuracy": hist.get("val_acc", [])})
-
-    # ---------------------------------------------------------
-    # TAB 3: AGRONOMIC ENCYCLOPEDIA
+    # TAB 2: AGRONOMIC ENCYCLOPEDIA
     # ---------------------------------------------------------
     with tab_encyclopedia:
         st.markdown(f"""
@@ -1709,31 +1664,31 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
                         st.markdown(f"- {r}")
 
     # =========================================================
-    # APP FOOTER WITH NANSTACK BRANDING
+    # APP FOOTER WITH BOTANY DEPT & NANSTACK BRANDING
     # =========================================================
     footer_html = f"""
     <div class="app-footer">
         <div class="footer-flex">
             <div class="footer-brand">
                 <span class="footer-brand-title">
-                    {ICONS['leaf']} AgriVision AI 
+                    {ICONS['leaf']} AgriVision AI • <b>Department of Botany</b>
                     <span style="font-size:0.75rem; color:#059669; font-weight:700; background:#ecfdf5; padding:2px 8px; border-radius:9999px;">Production Web App</span>
                 </span>
-                <span class="footer-brand-desc">{'مصنوعی ذہانت اور ڈیپ لرننگ کے ذریعے پودوں کی غذائی کمی کی خودکار تشخیص' if is_urdu else 'Deep Learning & Explainable Computer Vision for Precision Crop Nutrition'}</span>
+                <span class="footer-brand-desc">{'شعبہ نباتیات • مصنوعی ذہانت اور ڈیپ لرننگ کے ذریعے پودوں کی غذائی کمی کی خودکار تشخیص' if is_urdu else 'Department of Botany • Deep Learning & Computer Vision for Precision Crop Nutrition'}</span>
             </div>
             <a href="{NANSTACK_URL}" target="_blank" rel="noopener noreferrer" class="footer-nanstack-link">
                 <div class="footer-nanstack">
                     <img src="data:image/jpeg;base64,{nanstack_logo_b64}" class="nanstack-footer-logo" alt="Nanstack Logo" />
                     <div style="display:flex; flex-direction:column; align-items:flex-start; text-align:left;">
-                        <span class="footer-nanstack-text">Developed by <span class="nanstack-highlight">Nanstack</span></span>
+                        <span class="footer-nanstack-text">Engineered & Developed by <span class="nanstack-highlight">Nanstack</span></span>
                         <span style="font-size:0.74rem; color:#0284c7; font-weight:700;">nanstack.tech ↗</span>
                     </div>
                 </div>
             </a>
         </div>
         <div style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; font-size:0.75rem; color:#94a3b8;">
-            <span>© 2026 AgriVision System • Built for Research & Production Farming</span>
-            <span>Academic Implementation • MobileNetV2 & Grad-CAM XAI</span>
+            <span>© 2026 AgriVision System • Department of Botany Research & Production Farming</span>
+            <span>Technology Partner: <a href="{NANSTACK_URL}" target="_blank" rel="noopener noreferrer" style="color:#0284c7; font-weight:600; text-decoration:none;">Nanstack (nanstack.tech ↗)</a></span>
         </div>
     </div>
     """
