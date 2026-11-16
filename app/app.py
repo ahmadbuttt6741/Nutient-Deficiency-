@@ -1285,26 +1285,16 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
     st.markdown(f"""
     <div class="app-navbar" style="margin-bottom:1.5rem;">
         <div class="brand-section">
-            <div class="botany-hero-tag">
-                <span>🏛️</span>
-                <span>{'شعبہ نباتیات (باٹنی ڈیپارٹمنٹ)' if is_urdu else 'Department of Botany • Academic Research'}</span>
-            </div>
-            <div style="display:flex; align-items:center; gap:16px;">
-                <div class="brand-logo">{ICONS['leaf']}</div>
-                <div>
-                    <h1 class="brand-title">{'پودوں کے غذائی اجزاء کی تشخیص' if is_urdu else 'AgriVision AI Workstation'}</h1>
-                    <p class="brand-subtitle">{'شعبہ نباتیات • تحقیقی و پیداواری نیورل انجن فعال ہے' if is_urdu else f'🌿 <b>Department of Botany</b> • Welcome, {user.get("full_name")} • Production Neural Engine Active'}</p>
-                </div>
+            <div class="brand-logo">{ICONS['leaf']}</div>
+            <div>
+                <h1 class="brand-title">{'پودوں کے غذائی اجزاء کی تشخیص' if is_urdu else 'AgriVision AI Workstation'}</h1>
+                <p class="brand-subtitle">{'مصنوعی ذہانت و ڈیپ لرننگ کے ذریعے فصلوں کی درست نگہداشت' if is_urdu else 'Precision Crop Nutrition & Deep Learning Diagnostics'}</p>
             </div>
         </div>
         <div class="navbar-badges">
             <div class="botany-highlight-pill">
                 <span>🏛️</span>
-                <span>{'شعبہ نباتیات' if is_urdu else 'Botany Department'}</span>
-            </div>
-            <div class="status-pill">
-                <span class="pulse-dot"></span>
-                <span>{'نظام آن لائن ہے' if is_urdu else 'Engine Online'}</span>
+                <span>{'شعبہ نباتیات' if is_urdu else 'Department of Botany'}</span>
             </div>
             <a href="?logout=true" target="_self" class="navbar-logout-btn">
                 {ICONS['log_out']}
