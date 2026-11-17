@@ -1153,14 +1153,14 @@ def render_landing_page(nanstack_logo_b64: str):
             with st.form("form_signin", clear_on_submit=False):
                 username_or_email = st.text_input(
                     "Email or Username",
-                    placeholder="e.g. botany",
-                    value=st.session_state.get("auth_prefill_user", "botany")
+                    placeholder="Enter your username or email",
+                    value=""
                 )
                 password = st.text_input(
                     "Password",
                     type="password",
                     placeholder="Enter your password",
-                    value=st.session_state.get("auth_prefill_pass", "nanstack")
+                    value=""
                 )
                 
                 col_rem, col_fill = st.columns([1, 1])
@@ -1180,33 +1180,6 @@ def render_landing_page(nanstack_logo_b64: str):
                         st.rerun()
                     else:
                         st.error(f"Authentication Error: {message}")
-
-            # Quick Demo Presets with requested Botany credentials
-            st.markdown("""
-            <div class="demo-credentials-box">
-                <div style="font-weight:700; color:#1e293b; margin-bottom:6px;">Default Credentials:</div>
-                <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-                    <span><b>Username:</b> <code>botany</code></span>
-                    <span><b>Password:</b> <code>nanstack</code></span>
-                </div>
-                <div style="display:flex; justify-content:space-between;">
-                    <span><b>Admin:</b> <code>admin</code></span>
-                    <span><b>Password:</b> <code>nanstack</code></span>
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
-
-            col_d1, col_d2 = st.columns(2)
-            with col_d1:
-                if st.button("Autofill Botany Login", use_container_width=True):
-                    st.session_state["auth_prefill_user"] = "botany"
-                    st.session_state["auth_prefill_pass"] = "nanstack"
-                    st.rerun()
-            with col_d2:
-                if st.button("Autofill Admin Login", use_container_width=True):
-                    st.session_state["auth_prefill_user"] = "admin"
-                    st.session_state["auth_prefill_pass"] = "nanstack"
-                    st.rerun()
 
         # ---------------------------------------------
         # MODE 2: CREATE ACCOUNT
