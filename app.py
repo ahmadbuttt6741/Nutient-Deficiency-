@@ -69,7 +69,7 @@ ICONS = {
 
 # Set page configuration
 st.set_page_config(
-    page_title="AI based plant nutrients deficiency detection",
+    page_title="AI Based Plant Nutrients Deficiency Detection",
     page_icon=str(NANSTACK_LOGO_PATH) if NANSTACK_LOGO_PATH.exists() else "🌱",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -1075,7 +1075,7 @@ def render_landing_page(nanstack_logo_b64: str):
             <span>Precision Crop Health AI</span>
         </div>
         <h1 class="landing-title">
-            AI based plant nutrients <span class="landing-title-highlight">deficiency detection</span>
+            AI Based Plant Nutrients <span class="landing-title-highlight">Deficiency Detection</span>
         </h1>
         <p class="landing-desc">
             AgriVision AI is an end-to-end computer vision and deep learning platform designed to provide agronomists, 
@@ -1754,7 +1754,7 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
         </div>
         <div style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; font-size:0.75rem; color:#94a3b8;">
             <span>© 2026 AgriVision System • Department of Botany</span>
-            <span>AI based plant nutrients deficiency detection</span>
+            <span>AI Based Plant Nutrients Deficiency Detection</span>
         </div>
     </div>
     """
