@@ -1089,7 +1089,7 @@ def render_landing_page(nanstack_logo_b64: str):
             <div class="feature-item">
                 <div class="feature-icon-box">{ICONS['layers']}</div>
                 <div class="feature-text">
-                    <h4>Multi-Nutrient Screening (9 Target Classes)</h4>
+                    <h4>Macro & Micro Nutrients Screening (9 Target Classes)</h4>
                     <p>Detects deficiencies across primary, secondary, and micronutrients including Nitrogen, Phosphorus, Potassium, Calcium, Iron, Magnesium, Sulphur, Zinc, and Healthy foliage.</p>
                 </div>
             </div>

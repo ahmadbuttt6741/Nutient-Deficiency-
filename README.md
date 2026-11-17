@@ -9,7 +9,7 @@ Developed based on the Academic Project Proposal: *AI-Based Plant Nutrition Defi
 ## 🚀 Key Features
 
 - **Transfer Learning Backbone:** Fine-tuned `MobileNetV2` (with support for `EfficientNet-B0` and `ResNet50`) for rapid, accurate classification on CPU and GPU.
-- **Multi-Nutrient Diagnostic Classes:**
+- **Macro & Micro Nutrients Diagnostic Classes:**
   - `Healthy Leaf`
   - `Nitrogen (N)` deficiency
   - `Phosphorus (P)` deficiency
