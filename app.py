@@ -22,7 +22,6 @@ if str(ROOT_DIR) not in sys.path:
 
 # Nanstack Branding Constants
 NANSTACK_LOGO_PATH = ROOT_DIR / "app" / "assets" / "nanstack_logo.jpg"
-NANSTACK_URL = "https://nanstack.tech"
 
 def get_base64_image(image_path: Path) -> str:
     """Reads and encodes an image file to a base64 string for direct HTML embedding."""
@@ -68,9 +67,9 @@ ICONS = {
     "check": '<svg class="icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>'
 }
 
-# Set page configuration with Nanstack logo as favicon
+# Set page configuration
 st.set_page_config(
-    page_title="AgriVision AI | Plant Nutrition Diagnosis",
+    page_title="AI based plant nutrients deficiency detection",
     page_icon=str(NANSTACK_LOGO_PATH) if NANSTACK_LOGO_PATH.exists() else "🌱",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -653,14 +652,7 @@ st.markdown("""
         border: 1px solid #e2e8f0;
         padding: 8px 18px;
         border-radius: 9999px;
-        transition: all 0.25s ease;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-        cursor: pointer;
-    }
-    .footer-nanstack:hover {
-        border-color: #0284c7;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(2, 132, 199, 0.15);
     }
     .nanstack-footer-logo {
         width: 34px;
@@ -676,18 +668,12 @@ st.markdown("""
     }
     .nanstack-highlight {
         font-weight: 800;
-        background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #0f172a;
         font-size: 0.94rem;
         letter-spacing: -0.01em;
     }
 
     /* Sidebar Footer Credit */
-    .sidebar-credit-link {
-        text-decoration: none !important;
-        display: block;
-    }
     .sidebar-credit {
         margin-top: 1.5rem;
         background: #ffffff;
@@ -695,14 +681,7 @@ st.markdown("""
         border-radius: 14px;
         padding: 16px 14px;
         text-align: center;
-        transition: all 0.25s ease;
         box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        cursor: pointer;
-    }
-    .sidebar-credit:hover {
-        border-color: #0284c7;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(2, 132, 199, 0.15);
     }
     .sidebar-logo {
         width: 70px;
@@ -1073,7 +1052,7 @@ def render_landing_page(nanstack_logo_b64: str):
             </div>
             <div>
                 <h3 style="margin:0; font-size:1.3rem; font-weight:800; color:#0f172a; letter-spacing:-0.02em;">AgriVision AI</h3>
-                <p style="margin:0; font-size:0.75rem; color:#64748b;">Department of Botany • Plant Nutrition Diagnostic System</p>
+                <p style="margin:0; font-size:0.75rem; color:#64748b;">Plant Nutrition Diagnostic System</p>
             </div>
         </div>
         <div>
@@ -1093,10 +1072,10 @@ def render_landing_page(nanstack_logo_b64: str):
         st.markdown(f"""
         <div class="landing-hero-badge">
             <span class="pulse-dot"></span>
-            <span>Department of Botany • Precision Crop Health AI</span>
+            <span>Precision Crop Health AI</span>
         </div>
         <h1 class="landing-title">
-            Intelligent Plant Nutrition & <span class="landing-title-highlight">Deficiency Detection</span>
+            AI based plant nutrients <span class="landing-title-highlight">deficiency detection</span>
         </h1>
         <p class="landing-desc">
             AgriVision AI is an end-to-end computer vision and deep learning platform designed to provide agronomists, 
@@ -1281,21 +1260,14 @@ def render_landing_page(nanstack_logo_b64: str):
                     else:
                         st.error(message)
 
-        # Nanstack Footer Branding in Card
-        st.markdown(f"""
-        <div style="text-align:center; margin-top:1.5rem; padding-top:1.2rem; border-top:1px solid #f1f5f9; font-size:0.8rem; color:#64748b;">
-            Protected by Enterprise Access Control • 
-            <a href="{NANSTACK_URL}" target="_blank" style="color:#0284c7; font-weight:700; text-decoration:none;">Nanstack.tech ↗</a>
-        </div>
-        """, unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
-    # Landing Page Footer
+    # Landing Page Footer (Company name once at page bottom, no link)
     st.markdown(f"""
     <div style="margin-top:3rem; padding:1.5rem; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:0.85rem; color:#64748b;">
         <div>© 2026 <b>Department of Botany</b> • AgriVision AI Platform</div>
-        <div>
-            Engineered & Developed by <a href="{NANSTACK_URL}" target="_blank" rel="noopener noreferrer" style="color:#0284c7; font-weight:700; text-decoration:none;">Nanstack (nanstack.tech ↗)</a>
+        <div style="font-weight:600; color:#475569;">
+            Engineered & Developed by <span style="color:#0f172a; font-weight:700;">Nanstack</span>
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -1401,16 +1373,13 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
         else:
             st.warning("Model weights not loaded.")
 
-        # Sidebar Nanstack Credit Card with Logo and Web Link
+        # Sidebar Nanstack Credit Card with Logo (No link, name is enough)
         st.markdown(f"""
-        <a href="{NANSTACK_URL}" target="_blank" rel="noopener noreferrer" class="sidebar-credit-link">
-            <div class="sidebar-credit">
-                <img src="data:image/jpeg;base64,{nanstack_logo_b64}" class="sidebar-logo" alt="Nanstack" />
-                <div class="sidebar-credit-sub">Engineered & Maintained by</div>
-                <div class="sidebar-credit-title">Nanstack <span style="font-size:0.8rem; color:#0284c7;">↗</span></div>
-                <div class="sidebar-credit-desc">nanstack.tech</div>
-            </div>
-        </a>
+        <div class="sidebar-credit">
+            <img src="data:image/jpeg;base64,{nanstack_logo_b64}" class="sidebar-logo" alt="Nanstack" />
+            <div class="sidebar-credit-sub">Engineered & Maintained by</div>
+            <div class="sidebar-credit-title">Nanstack</div>
+        </div>
         """, unsafe_allow_html=True)
 
 
@@ -1803,19 +1772,16 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
                 </span>
                 <span class="footer-brand-desc">{'شعبہ نباتیات • مصنوعی ذہانت اور ڈیپ لرننگ کے ذریعے پودوں کی غذائی کمی کی خودکار تشخیص' if is_urdu else 'Department of Botany • Deep Learning & Computer Vision for Precision Crop Nutrition'}</span>
             </div>
-            <a href="{NANSTACK_URL}" target="_blank" rel="noopener noreferrer" class="footer-nanstack-link">
-                <div class="footer-nanstack">
-                    <img src="data:image/jpeg;base64,{nanstack_logo_b64}" class="nanstack-footer-logo" alt="Nanstack Logo" />
-                    <div style="display:flex; flex-direction:column; align-items:flex-start; text-align:left;">
-                        <span class="footer-nanstack-text">Engineered & Developed by <span class="nanstack-highlight">Nanstack</span></span>
-                        <span style="font-size:0.74rem; color:#0284c7; font-weight:700;">nanstack.tech ↗</span>
-                    </div>
+            <div class="footer-nanstack">
+                <img src="data:image/jpeg;base64,{nanstack_logo_b64}" class="nanstack-footer-logo" alt="Nanstack Logo" />
+                <div style="display:flex; flex-direction:column; align-items:flex-start; text-align:left;">
+                    <span class="footer-nanstack-text">Engineered & Developed by <span class="nanstack-highlight">Nanstack</span></span>
                 </div>
-            </a>
+            </div>
         </div>
         <div style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; font-size:0.75rem; color:#94a3b8;">
-            <span>© 2026 AgriVision System • Department of Botany Research & Production Farming</span>
-            <span>Technology Partner: <a href="{NANSTACK_URL}" target="_blank" rel="noopener noreferrer" style="color:#0284c7; font-weight:600; text-decoration:none;">Nanstack (nanstack.tech ↗)</a></span>
+            <span>© 2026 AgriVision System • Department of Botany</span>
+            <span>AI based plant nutrients deficiency detection</span>
         </div>
     </div>
     """
