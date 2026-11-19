@@ -20,7 +20,8 @@ ROOT_DIR = FILE_PATH.parent if (FILE_PATH.parent / "src").exists() else FILE_PAT
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
-# Nanstack Branding Constants
+# Institution & Branding Constants
+UON_LOGO_PATH = ROOT_DIR / "app" / "assets" / "uon_logo.png"
 NANSTACK_LOGO_PATH = ROOT_DIR / "app" / "assets" / "nanstack_logo.jpg"
 
 def get_base64_image(image_path: Path) -> str:
@@ -70,7 +71,7 @@ ICONS = {
 # Set page configuration
 st.set_page_config(
     page_title="AI Based Plant Nutrients Deficiency Detection",
-    page_icon=str(NANSTACK_LOGO_PATH) if NANSTACK_LOGO_PATH.exists() else "🌱",
+    page_icon=str(UON_LOGO_PATH) if UON_LOGO_PATH.exists() else "🌱",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -1038,7 +1039,7 @@ def get_predictor():
 # =============================================================
 # PUBLIC LANDING PAGE & AUTHENTICATION VIEW
 # =============================================================
-def render_landing_page(nanstack_logo_b64: str):
+def render_landing_page(uon_logo_b64: str, nanstack_logo_b64: str):
     """
     Renders the public landing page with website introduction,
     feature highlights, research metrics, and the secure login / registration panel.
@@ -1046,19 +1047,17 @@ def render_landing_page(nanstack_logo_b64: str):
     # Top Minimal Landing Header
     st.markdown(f"""
     <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.5rem 0 1.5rem 0; border-bottom:1px solid #e2e8f0; margin-bottom:2rem; flex-wrap:wrap; gap:12px;">
-        <div style="display:flex; align-items:center; gap:10px;">
-            <div style="background:#059669; color:white; width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center;">
-                {ICONS['leaf']}
-            </div>
+        <div style="display:flex; align-items:center; gap:14px;">
+            <img src="data:image/png;base64,{uon_logo_b64}" style="height:56px; width:auto; object-fit:contain; border-radius:6px;" alt="University of Narowal Logo" />
             <div>
-                <h3 style="margin:0; font-size:1.3rem; font-weight:800; color:#0f172a; letter-spacing:-0.02em;">AgriVision AI</h3>
-                <p style="margin:0; font-size:0.75rem; color:#64748b;">Plant Nutrition Diagnostic System</p>
+                <h2 style="margin:0; font-size:1.35rem; font-weight:800; color:#0f172a; letter-spacing:-0.02em; line-height:1.2;">Department Of Botany</h2>
+                <p style="margin:2px 0 0 0; font-size:0.92rem; font-weight:700; color:#059669; letter-spacing:0.01em;">University Of Narowal</p>
             </div>
         </div>
         <div>
             <div style="display:inline-flex; align-items:center; gap:8px; background:#ecfdf5; border:1.5px solid #a7f3d0; color:#065f46; padding:6px 16px; border-radius:9999px; font-size:0.84rem; font-weight:800; box-shadow:0 2px 6px rgba(5,150,105,0.08);">
-                <span>🏛️</span>
-                <span>Department of Botany</span>
+                <span>🌱</span>
+                <span>AgriVision AI Platform</span>
             </div>
         </div>
     </div>
@@ -1248,7 +1247,7 @@ def render_landing_page(nanstack_logo_b64: str):
 # =============================================================
 # PROTECTED WORKSTATION & DASHBOARD VIEW
 # =============================================================
-def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
+def render_protected_dashboard(uon_logo_b64: str, nanstack_logo_b64: str, user: dict):
     """
     Renders the full protected AgriVision AI diagnostic workstation,
     including the leaf analysis module, Grad-CAM XAI visualizer,
@@ -1264,11 +1263,11 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
     with st.sidebar:
         st.markdown(f"""
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <div style="display:flex; align-items:center; gap:10px;">
-                <div class="sidebar-logo-icon">{ICONS['leaf']}</div>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <img src="data:image/png;base64,{uon_logo_b64}" style="height:44px; width:auto; object-fit:contain; border-radius:4px;" alt="University of Narowal Logo" />
                 <div>
-                    <h3 style="margin:0; font-size:1.15rem; font-weight:800; color:#0f172a;">AgriVision AI</h3>
-                    <p style="margin:0; font-size:0.75rem; color:#64748b;">Department of Botany</p>
+                    <h3 style="margin:0; font-size:1.05rem; font-weight:800; color:#0f172a; line-height:1.2;">Department Of Botany</h3>
+                    <p style="margin:2px 0 0 0; font-size:0.8rem; font-weight:700; color:#059669;">University Of Narowal</p>
                 </div>
             </div>
             <button onclick="
@@ -1363,17 +1362,17 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
     
     st.markdown(f"""
     <div class="app-navbar" style="margin-bottom:1.5rem;">
-        <div class="brand-section">
-            <div class="brand-logo">{ICONS['leaf']}</div>
+        <div class="brand-section" style="display:flex; align-items:center; gap:14px;">
+            <img src="data:image/png;base64,{uon_logo_b64}" style="height:54px; width:auto; object-fit:contain; background:#ffffff; border-radius:8px; padding:3px; box-shadow:0 2px 6px rgba(0,0,0,0.08);" alt="University of Narowal Logo" />
             <div>
-                <h1 class="brand-title">{'پودوں کے غذائی اجزاء کی تشخیص' if is_urdu else 'AgriVision AI Workstation'}</h1>
-                <p class="brand-subtitle">{'مصنوعی ذہانت و ڈیپ لرننگ کے ذریعے فصلوں کی درست نگہداشت' if is_urdu else 'Precision Crop Nutrition & Deep Learning Diagnostics'}</p>
+                <h1 class="brand-title" style="margin:0; font-size:1.35rem; font-weight:800; color:#ffffff; line-height:1.2;">Department Of Botany</h1>
+                <p class="brand-subtitle" style="margin:2px 0 0 0; font-size:0.88rem; color:#a7f3d0; font-weight:700;">University Of Narowal</p>
             </div>
         </div>
         <div class="navbar-badges">
             <div class="botany-highlight-pill">
-                <span>🏛️</span>
-                <span>{'شعبہ نباتیات' if is_urdu else 'Department of Botany'}</span>
+                <span>🌱</span>
+                <span>AgriVision AI</span>
             </div>
             <a href="?logout=true" target="_self" class="navbar-logout-btn">
                 {ICONS['log_out']}
@@ -1764,6 +1763,7 @@ def render_protected_dashboard(nanstack_logo_b64: str, user: dict):
 # MAIN CONTROLLER
 # =============================================================
 def main():
+    uon_logo_b64 = get_base64_image(UON_LOGO_PATH)
     nanstack_logo_b64 = get_base64_image(NANSTACK_LOGO_PATH)
 
     # Handle query param logout action
@@ -1781,9 +1781,9 @@ def main():
 
     # Routing based on Authentication State
     if not st.session_state["authenticated"]:
-        render_landing_page(nanstack_logo_b64)
+        render_landing_page(uon_logo_b64, nanstack_logo_b64)
     else:
-        render_protected_dashboard(nanstack_logo_b64, st.session_state["user"])
+        render_protected_dashboard(uon_logo_b64, nanstack_logo_b64, st.session_state["user"])
 
 if __name__ == "__main__":
     main()
