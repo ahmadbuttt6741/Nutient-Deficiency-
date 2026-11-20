@@ -1089,7 +1089,7 @@ def render_landing_page(uon_logo_b64: str, nanstack_logo_b64: str):
                 <div class="feature-icon-box">{ICONS['layers']}</div>
                 <div class="feature-text">
                     <h4>Macro & Micro Nutrients Screening (9 Target Classes)</h4>
-                    <p>Detects deficiencies across primary, secondary, and micronutrients including Nitrogen, Phosphorus, Potassium, Calcium, Iron, Magnesium, Sulphur, Zinc, and Healthy foliage.</p>
+                    <p>Detects deficiencies across macronutrients and micronutrients including Nitrogen, Phosphorus, Potassium, Calcium, Iron, Magnesium, Sulphur, Zinc, and Healthy foliage.</p>
                 </div>
             </div>
             <div class="feature-item">
@@ -1711,7 +1711,7 @@ def render_protected_dashboard(uon_logo_b64: str, nanstack_logo_b64: str, user: 
             <span>{'پودوں کے غذائی اجزاء کی جامع گائیڈ' if is_urdu else 'Comprehensive Nutrient Deficiency Reference Guide'}</span>
         </div>
         """, unsafe_allow_html=True)
-        st.markdown("Standard agronomic reference guide for all primary, secondary, and micronutrients covered by the AI system:")
+        st.markdown("Standard agronomic reference guide for all macronutrients and micronutrients covered by the AI system:")
 
         for nutrient_key, info in NUTRIENT_KNOWLEDGE_BASE.items():
             title_display = f"{info['title']} / {info.get('title_ur', '')}" if is_urdu else info['title']

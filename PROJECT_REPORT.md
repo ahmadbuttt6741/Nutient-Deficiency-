@@ -48,7 +48,7 @@ The **AI Based Plant Nutrients Deficiency Detection** project (deployed via the 
 
 ## 2. Botanical Foundations & Agronomic Significance
 
-Plants require at least 17 essential elements for complete vegetative and reproductive development. These nutrients are categorized into macronutrients (primary and secondary) and micronutrients based on the quantitative requirements of plant tissues. A shortfall in any single element triggers characteristic biochemical disruptions that manifest as distinct foliar visual symptoms.
+Plants require at least 17 essential elements for complete vegetative and reproductive development. These nutrients are categorized into macronutrients and micronutrients based on the quantitative requirements of plant tissues. A shortfall in any single element triggers characteristic biochemical disruptions that manifest as distinct foliar visual symptoms.
 
 ```mermaid
 flowchart TD
